@@ -1,0 +1,14 @@
+.o
+*.out
+*.a
+*.so
+*.lo
+*.la
+*.elf
+*.bkp
+*.dtmp
+
+qemu/
+riscv/
+rvv-intrinsic-doc/
+rvv_spec_examples/env.sh
