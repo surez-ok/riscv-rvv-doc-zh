@@ -1,0 +1,43 @@
+<mxfile host="Electron" modified="2025-01-09T09:14:42.562Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.0 Chrome/112.0.5615.204 Electron/24.5.1 Safari/537.36" etag="Ra_mhXQrEzMr6NU_U3_u" version="21.5.0" type="device">
+  <diagram name="第 1 页" id="4knXB5S83GSm1kHDEQGC">
+    <mxGraphModel dx="1100" dy="822" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-1" value="MMX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="275" y="690" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-4" value="SSE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2492c2;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+          <mxGeometry x="343" y="650" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-5" value="NEON&lt;br&gt;128" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6ec2fe;strokeColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="413" y="610" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-24" value="Arm V6&lt;br&gt;(2000)" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="275" y="740" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-25" value="Arm V7-A&lt;br&gt;(2005)" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="343" y="740" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-89" value="SIMD" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#87a72f;strokeColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="275" y="690" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QnhKWj-urKdLgxcFlNK7-98" value="NEON&lt;br&gt;64/128" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#035ca0;fontColor=#ffffff;strokeColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="343" y="650" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5QzvcJGyVcDiPQYoqL-W-9" value="&lt;font color=&quot;#0000ff&quot;&gt;ARM SIMD 指令集进化&lt;/font&gt;" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" parent="1" vertex="1">
+          <mxGeometry x="253" y="550" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BlLCMCn0qVqpmXEn8K4T-1" value="SVE&lt;br&gt;128-2048" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6ec2fe;strokeColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="483" y="610" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BlLCMCn0qVqpmXEn8K4T-6" value="Arm V8-A&lt;br&gt;(2017)" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="483" y="740" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BlLCMCn0qVqpmXEn8K4T-7" value="Arm V8-A&lt;br&gt;(2012)" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="413" y="740" width="70" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
