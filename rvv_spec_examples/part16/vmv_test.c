@@ -12,7 +12,7 @@ void main(void)
   int32_t res[DATALEN] = {0};
 
   size_t vl;
-  vint32m4_t vx, vy;
+  vint32m4_t vx, vy, vz, vs;
 
   vl = __riscv_vsetvl_e32m4(DATALEN);
   vx = __riscv_vle32_v_i32m4(vec1, vl);
@@ -29,9 +29,9 @@ void main(void)
   printf("\r\n");
 
   // vmv.v.x
-  vy = __riscv_vmv_v_x_i32m4 (100, vl);
+  vz = __riscv_vmv_v_x_i32m4 (100, vl);
 
-  __riscv_vse32_v_i32m4(res, vy, vl);
+  __riscv_vse32_v_i32m4(res, vz, vl);
 
   for (int i = 0; i < DATALEN; i++) {
     printf("%d, ", res[i]);
@@ -42,10 +42,10 @@ void main(void)
   int32_t s1 = __riscv_vmv_x_s_i32m4_i32 (vy);
   printf("s0 = %d\r\n", s1);
 
-   // vmv.v.x
-  vy = __riscv_vmv_s_x_i32m4 (200, vl);
+  // vmv.s.x
+  vs = __riscv_vmv_s_x_i32m4 (200, vl);
 
-  __riscv_vse32_v_i32m4(res, vy, vl);
+  __riscv_vse32_v_i32m4(res, vs, vl);
 
   for (int i = 0; i < DATALEN; i++) {
     printf("%d, ", res[i]);

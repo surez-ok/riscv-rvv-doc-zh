@@ -15,7 +15,7 @@ void main(void)
   vl = __riscv_vsetvl_e32m4(DATALEN);
   vx = __riscv_vle32_v_i32m4(vec1, vl);
 
-  vx = __riscv_vslide1down_vx_i32m4 (vx, 99, vl);
+  vx = __riscv_vslide1down_vx_i32m4 (vx, 99, 4);
   __riscv_vse32_v_i32m4(res, vx, vl);
 
   for (int i = 0; i < DATALEN; i++) {
