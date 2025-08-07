@@ -376,18 +376,13 @@ RVV segment load & store 又分为3种类型：
 ### 4.1 单位步长的Sgement load&store (Sgement Unit-Stride load & store)
 
 ~~~shell
-# Format
- vlsseg<nf>e<eew>.v vd, (rs1), rs2, vm  # Strided segment loads
- vssseg<nf>e<eew>.v vs3, (rs1), rs2, vm # Strided segment stores
- # Examples
- vsetvli a1, t0, e8, ta, ma
- vlsseg3e8.v v4, (x5), x6 # Load bytes at addresses x5+i*x6 into v4[i],
- # and bytes at addresses x5+i*x6+1 into v5[i],
- # and bytes at addresses x5+i*x6+2 into v6[i].
- # Examples
- vsetvli a1, t0, e32, ta, ma
- vssseg2e32.v v2, (x5), x6 # Store words from v2[i] to address x5+i*x6
- # and words from v3[i] to address x5+i*x6+4
+# Format 
+vlseg<nf>e<eew>.v vd, (rs1), vm      # Unit-stride segment load template 
+vsseg<nf>e<eew>.v vs3, (rs1), vm     # Unit-stride segment store template
+ 
+# Examples 
+vlseg8e8.v vd, (rs1), vm   # Load eight vector registers with eight byte fields. 
+vsseg3e32.v vs3, (rs1), vm  # Store packed vector of 3*4-byte segments from vs3,vs3+1,vs3+2 to mem
 ~~~
 
 示例如下：

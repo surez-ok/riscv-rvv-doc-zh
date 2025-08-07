@@ -22,9 +22,9 @@ https://dzaima.github.io/intrinsics-viewer/
 
 **关于本文档：**
 
-1. github路径：https://github.com/surez-ok/riscv-rvv-doc-zh/tree/main/RVV-doc
+1. github路径：https://github.com/surez-ok/riscv-rvv-doc-zh/tree/main/riscv-rvv-doc_zh
 2. 文中的用例也都放到github仓库中，路径：https://github.com/surez-ok/riscv-rvv-doc-zh/tree/main/rvv_spec_examples， 第9讲中描述了这些用例如何运行
-3. 提供已下载好的[riscv-v-spec-1.0.pdf](https://github.com/surez-ok/riscv-rvv-doc-zh/blob/main/RVV-doc/image/riscv-v-spec-1.0.pdf) 以及[intrinsic 0.12.0_function](https://github.com/surez-ok/riscv-rvv-doc-zh/blob/main/RVV-doc/image/intrinsic_funcs_0.12.0.md)
+3. 提供已下载好的[riscv-v-spec-1.0.pdf](https://github.com/surez-ok/riscv-rvv-doc-zh/blob/main/riscv-rvv-doc_zh/image/riscv-v-spec-1.0.pdf) 以及[intrinsic 0.12.0_function](https://github.com/surez-ok/riscv-rvv-doc-zh/blob/main/riscv-rvv-doc_zh/image/intrinsic_funcs_0.12.0.md)
 
 以下是正文：
 

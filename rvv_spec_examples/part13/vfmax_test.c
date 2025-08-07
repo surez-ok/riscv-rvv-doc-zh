@@ -42,6 +42,6 @@ int main(void)
   }
   printf("\r\n");
 
-	return 0;
+  return 0;
 }
 

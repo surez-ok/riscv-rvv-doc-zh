@@ -22,7 +22,6 @@ char *strcpy_vec(char *destination, const char *source) {
   long first_set_bit = -1;
   for (size_t vl; first_set_bit < 0; src += vl, dst += vl) {
     vuint8m8_t vec_src = __riscv_vle8ff_v_u8m8(src, &vl, vlmax);
-    printf("vl = %d\r\n", vl);
     vbool1_t string_terminate = __riscv_vmseq_vx_u8m8_b1(vec_src, 0, vl);
     vbool1_t mask = __riscv_vmsif_m_b1(string_terminate, vl);
 
@@ -40,7 +39,6 @@ char *strcpy_vec(char *destination, const char *source) {
   size_t vl;
   for (;;) {
      vuint8m8_t vec_src = __riscv_vle8ff_v_u8m8(src, &vl, vlmax);
-     printf("vl = %d\r\n", vl);
      src += vl;
      __riscv_vse8_v_u8m8(dst, vec_src, vl);
      dst += vl;

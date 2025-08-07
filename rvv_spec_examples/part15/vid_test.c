@@ -4,7 +4,6 @@
 #include <math.h>
 #include <riscv_vector.h>
 
-
 void main(void)
 {
   size_t vl;

@@ -4,7 +4,6 @@
 #include <math.h>
 #include <riscv_vector.h>
 
-
 void main(void)
 {
   uint8_t src1[2] = {0xE0, 0x73};
