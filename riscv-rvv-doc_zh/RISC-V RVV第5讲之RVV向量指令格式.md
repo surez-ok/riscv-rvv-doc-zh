@@ -160,6 +160,6 @@ Active 元素，a2-a28除a8与a10, 参与运算
 2. Tail 部分是否拷贝到目的寄存器受`vta`参数控制
 3. Inactive 元素是否拷贝到目的寄存器受`vma`参数控制（vma 和 vta字段见第3讲）
 
-## 参考：
+**参考：**
 
 1. [rvv-intrinsic-doc](https://github.com/riscv-non-isa/rvv-intrinsic-doc/blob/main/doc/rvv-intrinsic-spec.adoc)

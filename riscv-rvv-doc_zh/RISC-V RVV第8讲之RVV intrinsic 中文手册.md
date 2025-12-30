@@ -166,7 +166,7 @@ intrinsics APIs 将`vm`，`vta`，`vma`放在一起进行设置，见本文的4.
 
 ### 3.5  控制定点数的rounding 模式
 
-对于定点intrinsics API，提供入参`vxrm`，可用来设置RVV `vxrm`寄存器，从而设置定点算术运算的rounding模式。
+对于定点intrinsics API，提供入参`vxrm`，位宽2bit，可用来设置RVV `vxrm`寄存器，从而设置定点算术运算的rounding模式。
 
 入参`vxrm`需要设置为如下常数：
 
@@ -200,7 +200,7 @@ enum __RISCV_VXRM {
 
 * 显式FP rounding模式
 
-  显式FP rounding模式可以设置`frm`，其intrinsics API在函数名中后跟一个`_rm`后缀。API 中的参数必须是一个常量整型表达式，可以取以下的枚举值：
+  显式FP rounding模式可以设置`frm`，位于浮点控制寄存器`fcsr`，位宽3bit，其intrinsics API在函数名中后跟一个`_rm`后缀。API 中的参数必须是一个常量整型表达式，可以取以下的枚举值，后面在《RISC-V RVV第13 讲之RVV浮点算术指令》的17节会举例展示不同标记的作用：
 
   ~~~c
   enum __RISCV_FRM {
@@ -739,8 +739,7 @@ intrinsics API 提供了`vv`和`vx`的操作数助记符，但不提供`vi`操�
 
  fault-only-first load intrinsics（首次异常加载指令）将`vl`寄存器中的新值写入`new_vl`参数。
 
-
-## 参考：
+**参考：**
 
 1. [rvv-intrinsics-doc  v1.0.x](https://github.com/riscv-non-isa/rvv-intrinsic-doc/blob/v1.0.x/doc/rvv-intrinsic-spec.adoc)
 

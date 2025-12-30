@@ -10,7 +10,7 @@ RVV中有一些常用缩写词，看RVV spec时需要弄明白这些概念。
 
 | 单词缩写 | 全称                      | 含义                                                         |
 | -------- | ------------------------- | ------------------------------------------------------------ |
-| VLEN     | Vector Length in bits     | 向量寄存器长度，单位bits                                     |
+| VLEN     | Vector Length in bits     | 向量寄存器长度，单位bits，常见VLEN=128bits/256bits/512bits/1024bits等 |
 | ELEN     | Element Length            | 最大元素宽度，单位bits，常见的ELEN=32 和 ELEN=64，即最大元素宽度就是XLEN值 |
 | SEW      | Selected Element Width    | 被选中的元素位宽，见下文详细描述                             |
 | EEW      | Effective Element Width   | 与SEW类似，有效的元素位宽，用于向量操作数。对于加宽指令，目的数据元素的位宽会加宽一倍 |
@@ -69,6 +69,12 @@ vwadd.vv vd, vs2, vs1, vm # vector-vector
 ELEN * EMUL >= SEW
 ~~~
 
+**注意：** 这个约束目前还不确定，各处的说法不一致（存疑）。
+
+* riscv-v-spec-1.0 中的3.4.2 章节约束是：` ELEN * EMUL >= SEWmin`，其中SEWmin=8bit
+* rvv intrinsic中的约束是：`ELEN * EMUL >= SEW`
+* Qemu中`qemu/target/riscv/vector_helper.c`中约束是`VLEN * EMUL >= SEW`
+
 **EMUL**：
 
 `EMUL`表示有效寄存器组乘系数，一般情况下`EMUL`=`LMUL`，有些加宽指令中，元素的数量是一样的，所以对于目的操作数，寄存器组乘系数需加宽一倍。
@@ -91,18 +97,16 @@ EEW/EMUL = SEW/LMUL
 
 以 A + B = C 向量扩宽加法举例：
 
-A B 输入数据类型为int32，
-
-C的数据类型为Int64
+A B 输入数据类型为int32，C的数据类型为Int64
 
 假设VLEN=128bits，那么一个向量寄存器可以放{a0~a3} 共4个元素，如果`LMUL`=2 时，意味着使用两个向量寄存器，一共可以装{a0~a7}共8个元素，此时`EEW`=`SEW` 且 `EMUL`=`LMUL`，向量B也是类似
 
-对于输出C向量，数据类型为Int64，VLEN=128bits，那么一个向量寄存器可以放{c0~c1} 共2个元素，很明显2个寄存器存放不了8个int64 元素，所以LMUL也要扩宽，也即`EEW`=2 * `SEW` 且 `EMUL`= 2 * `LMUL`
+对于输出向量C，数据类型为Int64，VLEN=128bits，那么一个向量寄存器可以放{c0~c1} 共2个元素，很明显2个寄存器存放不了8个int64 元素，所以LMUL也要扩宽，也即`EEW`=2 * `SEW` 且 `EMUL`= 2 * `LMUL`
 
 
 
 ![](image/2/SEW_LMUL_EEW_EMUL.drawio.png)
 
-## 参考：
+**参考：**
 
 1. [rvv1.0 spec](https://github.com/riscv/riscv-v-spec/blob/v1.0/v-spec.adoc)

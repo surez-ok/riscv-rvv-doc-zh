@@ -24,8 +24,8 @@ int main(void)
     // load数据
     op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
     pSrcA += vl;
-
-    rd = __riscv_vfcvt_rtz_x_f_v_i32m2(op1, vl);
+    // RMM 与roundf() 函数等价
+    rd = __riscv_vfcvt_x_f_v_i32m2_rm(op1, __RISCV_FRM_RMM, vl);
 
     // store数据
     __riscv_vse32_v_i32m2 (pDes, rd, vl);
@@ -35,6 +35,12 @@ int main(void)
   // 数据打印
   for (int i = 0; i < DATALEN; i++) {
     printf("%d, ", res[i]);
+  }
+  printf("\r\n");
+
+  printf("Equal to roundf\r\n");
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%f, ", roundf(vec1[i]));
   }
   printf("\r\n");
 

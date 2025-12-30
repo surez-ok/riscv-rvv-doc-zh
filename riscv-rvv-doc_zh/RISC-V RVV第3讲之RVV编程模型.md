@@ -96,6 +96,12 @@ vlenb = VLEN / 8
 
 **注意：** `vsetvl`指令需要用到`vlenb`寄存器，用来计算`vl` 和 `vtype`
 
+可以用如下rvv intrinsic API来得到VLEN
+
+~~~c
+printf("vlen = %d bits\r\n", __riscv_vlenb() * 8); 
+~~~
+
 ### 3.2 vl寄存器
 
 `vl`寄存器用来设置向量指令处理的数据元素的数量，它只能被vsetvl指令或者首次异常矢量加载指令（fault-only-first）更新。
@@ -124,7 +130,7 @@ vlenb = VLEN / 8
 
 下面以一个示例详细的讲述一下向量寄存器的的Prestart部分，Body部分，Tail 部分，Active 元素， Inactive元素，不同部分使用不同颜色块区分。
 
-举例：VLEN = 128 bits，当元素类型为int32_t时，每个RVV寄存器可以装4个元素（VLEN / SEW）, LMUL 可以取{1/2，1，2,  4, 8}（为什么LMUL不能取1/8 与 1/4？ 这是因为`ELEN` `EMU`L 与 `SEW`要满足约束：`ELEN` * `EMUL` >= `SEW`），所以`vlmax = LMUL*VLEN/SEW`
+举例：VLEN = 128 bits，当元素类型为int32_t时，每个RVV寄存器可以装4个元素（VLEN / SEW）, LMUL 可以取{1/2，1，2,  4, 8}（为什么LMUL不能取1/8 与 1/4？ 这是因为`ELEN` `EMU`L 与 `SEW`要满足约束：`ELEN` * `EMUL` >= `SEW`（存疑）），所以`vlmax = LMUL*VLEN/SEW`
 
 下图所示：
 
@@ -188,12 +194,19 @@ Active 元素，a2-a28除a8与a10, 参与运算
 
 RVV支持扩宽或缩减指令，意味着向量指令的源操作数和目的操作数可能具有不同的位宽`SEW`，但元素个数是相同的，这意味着源操作数和目的操作数的`LMUL`可能不一致，见第2讲中的`LMUL`与`EMUL`
 
-`LMUL`也可以是一个分数值{1/8，1/4， 1/2}，但是需要满足如下约束条件：
+`LMUL`也可以是一个分数值{1/8，1/4， 1/2}，但是需要满足如下约束条件（存疑）：
 
 ~~~c
 ELEN * EMUL >= SEW
 ~~~
+对于rv64， ELEN = 64， SEW = int32，那么EMUL >= 1/2
+
+可以参考intrinsic spec， 下图标红的NA表示不支持，从图中也体现了约束`ELEN * EMUL >= SEW`
+
+![intrinsic_spec_elen_emul_sew](image\3\intrinsic_spec_elen_emul_sew.png)
+
 另外`VLMAX`的计算公式如下：
+
 ~~~c
 VLMAX = LMUL*VLEN/SEW
 ~~~
@@ -236,9 +249,9 @@ VLMAX = LMUL*VLEN/SEW
 反汇编指令：
 
 ~~~asm
- ta # Tail agnostic，即末尾元素未知
+ ta # Tail agnostic，   即末尾元素未知
  tu # Tail undisturbed，即末尾元素不打扰
- ma # Mask agnostic，即非活跃元素未知
+ ma # Mask agnostic，   即非活跃元素未知
  mu # Mask undisturbed，即非活跃元素不打扰
  vsetvli t0, a0, e32, m4, ta, ma # Tail agnostic, mask agnostic，即末尾元素未知，非活跃元素未知
  vsetvli t0, a0, e32, m4, tu, ma # Tail undisturbed, mask agnostic，即末尾元素不打扰，非活跃元素未知
@@ -289,7 +302,7 @@ roundoff_signed(v, d) = (signed(v) >> d) + r
 
 
 
-## 参考：
+**参考：**
 
 2. [rvv1.0 spec](https://github.com/riscv/riscv-v-spec/blob/v1.0/v-spec.adoc)
 2. [编译入门那些事儿（10）：RISC-V Vector 概述](https://www.hikunpeng.com/developer/techArticles/20240228-7)

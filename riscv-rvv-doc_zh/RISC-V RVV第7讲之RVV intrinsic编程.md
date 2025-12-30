@@ -187,7 +187,7 @@ void vector_add(float *dst,
 
 
 
-## 参考：
+**参考：**
 
 1. [rvv-intrinsic-doc](https://github.com/riscv-non-isa/rvv-intrinsic-doc/blob/main/doc/rvv-intrinsic-spec.adoc)
 2. [RISC-V Vector Programming in C with Intrinsics](https://fprox.substack.com/p/risc-v-vector-programming-in-c-with)

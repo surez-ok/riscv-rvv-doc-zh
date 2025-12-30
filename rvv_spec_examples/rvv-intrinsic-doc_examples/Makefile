@@ -24,7 +24,7 @@ $(TARGET): %.elf: %.c
 
 # 运行目标
 run: $(TARGET)
-	@$(foreach file,$(TARGET),echo "run $(file)"; $(call RUN_QEMU,$(file));)
+	@$(foreach file,$(TARGET),echo "Run $(file)"; $(call RUN_QEMU,$(file)); echo ""; echo "";)
 
 .PHONY: clean
 clean:

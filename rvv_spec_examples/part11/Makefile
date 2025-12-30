@@ -20,11 +20,11 @@ build: $(TARGET)
 
 # 编译规则
 $(TARGET): %.elf: %.c
-	@$(CC) -march=rv64imafdcv -mabi=lp64d $< -o $@ -lm -static -O2 -g
+	$(CC) -march=rv64imafdcv -mabi=lp64d $< -o $@ -lm -static -O2 -g
 
 # 运行目标
 run: $(TARGET)
-	@$(foreach file,$(TARGET),echo "run $(file)"; $(call RUN_QEMU,$(file));)
+	@$(foreach file,$(TARGET),echo "Run $(file)"; $(call RUN_QEMU,$(file)); echo ""; echo "";)
 
 .PHONY: clean
 clean:

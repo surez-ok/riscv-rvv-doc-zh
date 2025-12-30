@@ -27,6 +27,7 @@ int main(void)
     pSrcA += vl;
     pSrcB += vl;
 
+    // 定点数乘法
     rd = __riscv_vsmul_vv_i16m1(op1, op2, __RISCV_VXRM_RDN, vl);
 
     // store数据

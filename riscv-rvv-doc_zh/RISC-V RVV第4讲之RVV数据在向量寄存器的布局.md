@@ -76,7 +76,7 @@ SEW/LMUL 相等，也即 VLMAX = LMUL*VLEN/SEW 也是一个常数
 
 对于 VLMAX = LMUL*VLEN/SEW ， 当LMUL=8以及SEW=8 时，VLMAX取最大值，值为VLEN，也即向量寄存器组最多存储VLEN个元素，一个掩码寄存器（VLEN bits）正好能够对应。后面在第15章讲mask的章节再详细描述。
 
-## 参考：
+**参考：**
 
 1. [rvv-intrinsic-doc](https://github.com/riscv-non-isa/rvv-intrinsic-doc/blob/main/doc/rvv-intrinsic-spec.adoc)
 

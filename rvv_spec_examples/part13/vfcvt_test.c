@@ -9,7 +9,7 @@ typedef float float32_t;
 #define DATALEN 8
 int main(void)
 {
-  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.9 };
+  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.8 };
   int32_t res[DATALEN] = {0.0};
 
   const float32_t *pSrcA = vec1;
@@ -25,7 +25,7 @@ int main(void)
     op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
     pSrcA += vl;
 
-    // 向量浮点加法
+    // 浮点转整数，最近偶数舍入
     rd = __riscv_vfcvt_x_f_v_i32m2(op1, vl);
 
     // store数据

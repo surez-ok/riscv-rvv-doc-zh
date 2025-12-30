@@ -4,13 +4,13 @@
 
 这一章讲述RVV 向量浮点算术命令。
 
-### 1 向量浮点异常标志
+## 1 向量浮点异常标志
 
 参与向量浮点运算的活跃元素如果产生异常，将会在`fflag`寄存器中设置相关标志位
 
 **注意：**向量浮点运算会共用标量浮点运算的一些浮点状态寄存器。如浮点异常标志寄存器`fflags`, 浮点舍入模式寄存器`frm` 等
 
-### 2 单宽度向量浮点加减法指令
+## 2 单宽度向量浮点加减法指令
 
 提供向量浮点加减法指令。
 
@@ -131,7 +131,7 @@ res[16] = {-1.000000, -2.000000, -3.000000, -4.000000, -5.000000, -6.000000, -7.
 
 
 
-### 3 扩宽向量浮点加减指令
+## 3 扩宽向量浮点加减指令
 
 ~~~shell
 # Widening FP add/subtract, 2*SEW = SEW +/- SEW
@@ -206,7 +206,7 @@ int main(void)
 res[16] = {32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000, 32868.000000}
 ~~~
 
-### 4 单宽度浮点乘除指令
+## 4 单宽度浮点乘除指令
 
 ~~~shell
 # Floating-point multiply
@@ -325,7 +325,7 @@ res[16] = {0.250000, 0.500000, 0.750000, 1.000000, 1.250000, 1.500000, 1.750000,
 
 
 
-### 5 扩展向量浮点乘法
+## 5 扩展向量浮点乘法
 
 ~~~shell
 # Widening floating-point multiply
@@ -389,7 +389,7 @@ res[16] = {1.000000, 4.000000, 9.000000, 16.000000, 25.000000, 36.000000, 49.000
 
 
 
-### 6 单宽度向量浮点乘加指令
+## 6 单宽度向量浮点乘加指令
 
 ~~~shell
 # FP multiply-accumulate, overwrites addend
@@ -473,7 +473,7 @@ res[16] = {2.000000, 6.000000, 12.000000, 20.000000, 30.000000, 42.000000, 56.00
 
 
 
-### 7 扩宽向量浮点乘加指令
+## 7 扩宽向量浮点乘加指令
 
 提供扩宽的浮点乘加等指令。
 
@@ -492,7 +492,7 @@ vfwnmsac.vv vd, vs1, vs2, vm # vd[i] = -(vs1[i] * vs2[i]) + vd[i]
 vfwnmsac.vf vd, rs1, vs2, vm # vd[i] = -(f[rs1] * vs2[i]) + vd[i]
 ~~~
 
-### 8 向量浮点平方根指令
+## 8 向量浮点平方根指令
 
 ~~~shell
 # Floating-point square root sqrt(x)
@@ -501,7 +501,7 @@ vfwnmsac.vf vd, rs1, vs2, vm # vd[i] = -(f[rs1] * vs2[i]) + vd[i]
 
 示例见本篇10节。
 
-### 9 向量浮点倒数平方根估计指令
+## 9 向量浮点倒数平方根估计指令
 
 ~~~shell
 # Floating-point reciprocal square-root estimate to 7 bits. estimate of 1/sqrt(x) accurate to 7 bits
@@ -510,7 +510,7 @@ vfwnmsac.vf vd, rs1, vs2, vm # vd[i] = -(f[rs1] * vs2[i]) + vd[i]
 
 示例见本篇10节。
 
-### 10 向量浮点倒数估计指令
+## 10 向量浮点倒数估计指令
 
 ~~~shell
 # Floating-point reciprocal (1/x) estimate to 7 bits.
@@ -585,7 +585,7 @@ vfrec7 result[16] = {0.996094, 0.498047, 0.332031, 0.249023, 0.199219, 0.166016,
 
 
 
-### 11 向量浮点MIN/MAX指令
+## 11 向量浮点MIN/MAX指令
 
 ~~~shell
 # Floating-point minimum
@@ -649,7 +649,7 @@ res[16] = {5.000000, 5.000000, 5.000000, 5.000000, 5.000000, 6.000000, 7.000000,
 
 
 
-### 12 向量浮点符号注入指令
+## 12 向量浮点符号注入指令
 
 ~~~shell
  vfsgnj.vv vd, vs2, vs1, vm # Vector-vector
@@ -710,7 +710,7 @@ res[16] = {1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 6.000000, 7.000000,
 
 
 
-### 13 向量浮点比较指令
+## 13 向量浮点比较指令
 
 ~~~shell
 # Compare equal
@@ -731,7 +731,7 @@ res[16] = {1.000000, 2.000000, 3.000000, 4.000000, 5.000000, 6.000000, 7.000000,
  vmfge.vf vd, vs2, rs1, vm # vector-scalar
 ~~~
 
-### 14 向量浮点分类指令
+## 14 向量浮点分类指令
 
 ~~~shell
 vfclass.v vd, vs2, vm # Vector-vector
@@ -803,7 +803,7 @@ res[8] = {64, 64, 2, 2, 16, 8, 4, 32}
 
 
 
-### 15 向量浮点合并指令
+## 15 向量浮点合并指令
 
 ~~~shell
 vfmerge.vfm vd, vs2, rs1, v0 # vd[i] = v0.mask[i] ? f[rs1] : vs2[i]
@@ -865,13 +865,13 @@ res[16] = {5.000000, 5.000000, 5.000000, 5.000000, 5.000000, 6.000000, 7.000000,
 
 
 
-### 16 向量浮点移动指令
+## 16 向量浮点移动指令
 
 ~~~shell
 vfmv.v.f vd, rs1 # vd[i] = f[rs1]
 ~~~
 
-### 17 单宽度浮点&整数类型转换指令
+## 17 单宽度浮点&整数类型转换指令
 
 ~~~shell
 vfcvt.xu.f.v vd, vs2, vm     # 将浮点数转换为无符号整数.
@@ -882,10 +882,23 @@ vfcvt.f.xu.v vd, vs2, vm     # 将无符号数转换为浮点数
 vfcvt.f.x.v vd, vs2, vm      # 将有符号数转换为浮点数
 ~~~
 
-例如，将浮点数转换为有符号整数：
+第8讲提到，对于浮点数提供如下几种模式，可供配置：
 
 ~~~c
-typedef float float32_t;
+enum __RISCV_FRM {
+  __RISCV_FRM_RNE = 0, // 最近偶数舍入，默认
+  __RISCV_FRM_RTZ = 1, // 向0舍入, 与truncf()函数等价
+  __RISCV_FRM_RDN = 2, // 向下（负无穷）舍入,与floorf()函数等价
+  __RISCV_FRM_RUP = 3, // 向上（正无穷）舍入,与ceilf()函数等价
+  __RISCV_FRM_RMM = 4, // 向最大尾数舍入，与roundf()函数等价
+}; 
+~~~
+
+
+
+### 17.1 将浮点数转换为有符号整数（RNE，默认）
+
+~~~c
 typedef float float32_t;
 
 #define DATALEN 8
@@ -907,7 +920,7 @@ int main(void)
     op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
     pSrcA += vl;
 
-    // 向量浮点加法
+    // 浮点转整数，最近偶数舍入
     rd = __riscv_vfcvt_x_f_v_i32m2(op1, vl);
 
     // store数据
@@ -928,10 +941,10 @@ int main(void)
 打印结果为:
 
 ~~~log
-res[4] = {16, 16, 16, 17, 17, -16, -16, -17}
+res[8] = {16, 16, 16, 17, 17, -16, -16, -17}
 ~~~
 
-归零截断：
+### 17.2 归零截断RNE与truncf()函数等价
 
 ~~~c
 typedef float float32_t;
@@ -939,7 +952,7 @@ typedef float float32_t;
 #define DATALEN 8
 int main(void)
 {
-  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.8 };
+  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.9 };
   int32_t res[DATALEN] = {0.0};
 
   const float32_t *pSrcA = vec1;
@@ -954,9 +967,9 @@ int main(void)
     // load数据
     op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
     pSrcA += vl;
-
-    // 向量浮点加法
-    rd = __riscv_vfcvt_x_f_v_i32m2(op1, vl);
+    // 归零截断,与truncf() ,下面两种写法等价
+    rd = __riscv_vfcvt_rtz_x_f_v_i32m2(op1, vl);
+    // rd = __riscv_vfcvt_x_f_v_i32m2_rm(op1, __RISCV_FRM_RTZ, vl);
 
     // store数据
     __riscv_vse32_v_i32m2 (pDes, rd, vl);
@@ -969,6 +982,12 @@ int main(void)
   }
   printf("\r\n");
 
+  printf("Equal to truncf\r\n");
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%f, ", truncf(vec1[i]));
+  }
+  printf("\r\n");
+
   return 0;
 }
 ~~~
@@ -976,10 +995,179 @@ int main(void)
 打印结果为：
 
 ~~~log
-res[4] = {16, 16, 16, 16, 16, -16, -16, -16,}
+res[8] = {16, 16, 16, 16, 16, -16, -16, -16}
+Equal to truncf
+16.000000, 16.000000, 16.000000, 16.000000, 16.000000, -16.000000, -16.000000, -16.000000,
 ~~~
 
-### 18 扩宽浮点/整数类型转换指令
+### 17.3 RDN与floorf()函数等价
+
+~~~c
+typedef float float32_t;
+
+#define DATALEN 8
+int main(void)
+{
+  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.9 };
+  int32_t res[DATALEN] = {0.0};
+
+  const float32_t *pSrcA = vec1;
+  int32_t *pDes = res;
+
+  size_t avl = DATALEN;
+  size_t vl;
+  vfloat32m2_t op1;
+  vint32m2_t rd;
+
+  for (; (vl = __riscv_vsetvl_e32m2(avl)) > 0; avl -= vl) {
+    // load数据
+    op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
+    pSrcA += vl;
+    // RDN 与floorf() 函数等价
+    rd = __riscv_vfcvt_x_f_v_i32m2_rm(op1, __RISCV_FRM_RDN, vl);
+
+    // store数据
+    __riscv_vse32_v_i32m2 (pDes, rd, vl);
+    pDes += vl;
+  }
+
+  // 数据打印
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%d, ", res[i]);
+  }
+  printf("\r\n");
+
+  printf("Equal to floorf\r\n");
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%f, ", floorf(vec1[i]));
+  }
+  printf("\r\n");
+
+  return 0;
+}
+~~~
+
+打印结果为：
+
+~~~log
+res[8] = {16, 16, 16, 16, 16, -17, -17, -17}  
+Equal to floorf
+16.000000, 16.000000, 16.000000, 16.000000, 16.000000, -17.000000, -17.000000, -17.000000,
+~~~
+
+### 17.4 RUP与ceilf()函数等价
+
+~~~c
+typedef float float32_t;
+
+#define DATALEN 8
+int main(void)
+{
+  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.9 };
+  int32_t res[DATALEN] = {0.0};
+
+  const float32_t *pSrcA = vec1;
+  int32_t *pDes = res;
+
+  size_t avl = DATALEN;
+  size_t vl;
+  vfloat32m2_t op1;
+  vint32m2_t rd;
+
+  for (; (vl = __riscv_vsetvl_e32m2(avl)) > 0; avl -= vl) {
+    // load数据
+    op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
+    pSrcA += vl;
+    // RUP 与ceilf() 函数等价
+    rd = __riscv_vfcvt_x_f_v_i32m2_rm(op1, __RISCV_FRM_RUP, vl);
+
+    // store数据
+    __riscv_vse32_v_i32m2 (pDes, rd, vl);
+    pDes += vl;
+  }
+
+  // 数据打印
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%d, ", res[i]);
+  }
+  printf("\r\n");
+
+  printf("Equal to ceilf\r\n");
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%f, ", ceilf(vec1[i]));
+  }
+  printf("\r\n");
+
+  return 0;
+}
+~~~
+
+打印结果为：
+
+~~~log
+res[8] = {16, 17, 17, 17, 17, -16, -16, -16,}  
+Equal to ceilf
+16.000000, 17.000000, 17.000000, 17.000000, 17.000000, -16.000000, -16.000000, -16.000000,
+~~~
+
+### 17.5 RMM与roundf()函数等价
+
+~~~c
+typedef float float32_t;
+
+#define DATALEN 8
+int main(void)
+{
+  const float32_t vec1[DATALEN] = { 16.0, 16.40, 16.5000, 16.5001, 16.9, -16.1000, -16.5000, -16.9 };
+  int32_t res[DATALEN] = {0.0};
+
+  const float32_t *pSrcA = vec1;
+  int32_t *pDes = res;
+
+  size_t avl = DATALEN;
+  size_t vl;
+  vfloat32m2_t op1;
+  vint32m2_t rd;
+
+  for (; (vl = __riscv_vsetvl_e32m2(avl)) > 0; avl -= vl) {
+    // load数据
+    op1 = __riscv_vle32_v_f32m2(pSrcA, vl);
+    pSrcA += vl;
+    // RMM 与roundf() 函数等价
+    rd = __riscv_vfcvt_x_f_v_i32m2_rm(op1, __RISCV_FRM_RMM, vl);
+
+    // store数据
+    __riscv_vse32_v_i32m2 (pDes, rd, vl);
+    pDes += vl;
+  }
+
+  // 数据打印
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%d, ", res[i]);
+  }
+  printf("\r\n");
+
+  printf("Equal to roundf\r\n");
+  for (int i = 0; i < DATALEN; i++) {
+    printf("%f, ", roundf(vec1[i]));
+  }
+  printf("\r\n");
+
+  return 0;
+}
+~~~
+
+打印结果为：
+
+~~~log
+res[8] = {16, 16, 17, 17, 17, -16, -17, -17}  
+Equal to roundf
+16.000000, 16.000000, 17.000000, 17.000000, 17.000000, -16.000000, -17.000000, -17.000000,
+~~~
+
+
+
+## 18 扩宽浮点/整数类型转换指令
 
 ~~~shell
 vfwcvt.xu.f.v vd, vs2, vm # Convert float to double-width unsigned integer.
@@ -993,7 +1181,7 @@ vfwcvt.f.f.v vd, vs2, vm # Convert single-width float to double-width float.
 
 
 
-### 19 缩减浮点/整数类型转换指令
+## 19 缩减浮点/整数类型转换指令
 
 ~~~shell
 vfncvt.xu.f.w vd, vs2, vm # Convert double-width float to unsigned integer.
@@ -1009,3 +1197,7 @@ vfncvt.rod.f.f.w vd, vs2, vm # Convert double-width float to single-width float,
 
 
 
+**参考：**
+
+1. [标准wiki](https://www.standards.wiki/c/c_library_math_function_roundf.html)
+2. [Handbook of Mathematical Functions](https://personal.math.ubc.ca/~cbm/aands/abramowitz_and_stegun.pdf)
